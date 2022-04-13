@@ -11,13 +11,4 @@ function App() {
 	);
 }
 
-function App() {
-	return (
-		<div>
-			<Header />
-			<Footer />
-		</div>
-	);
-}
-
 export default App;
