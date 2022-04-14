@@ -1,8 +1,8 @@
 function Header() {
 	return (
-		<div>
-			<h2>Это шапка сайта</h2>
-		</div>
+		<header className='header'>
+			<img src='https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_TV_2015.svg' />
+		</header>
 	);
 }
 
