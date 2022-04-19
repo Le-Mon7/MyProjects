@@ -1,7 +1,7 @@
 import style from './Dialogs.module.scss';
 
 function Dialogs() {
-	return <div></div>;
+	return <div>Dialogs</div>;
 }
 
 export default Dialogs;
