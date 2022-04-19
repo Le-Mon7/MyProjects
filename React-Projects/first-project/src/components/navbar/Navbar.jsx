@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import style from './Navbar.module.scss';
 
 function Navbar() {
@@ -5,19 +6,54 @@ function Navbar() {
 		<nav className={style.nav}>
 			<ul>
 				<li className={style.item}>
-					<a href='/messages/'>Messages</a>
-				</li>
-				<li className={`${style.item} ${style.active}`}>
-					<a href='/music/'>Music</a>
-				</li>
-				<li className={style.item}>
-					<a href='/news/'>News</a>
-				</li>
-				<li className={style.item}>
-					<a href='/profile/'>Profile</a>
+					<NavLink
+						to='/messages/'
+						className={(navData) =>
+							navData.isActive ? style.active : ''
+						}
+					>
+						Messages
+					</NavLink>
 				</li>
 				<li className={style.item}>
-					<a href='/settings/'>Settings</a>
+					<NavLink
+						to='/music/'
+						className={(navData) =>
+							navData.isActive ? style.active : ''
+						}
+					>
+						Music
+					</NavLink>
+				</li>
+				<li className={style.item}>
+					<NavLink
+						to='/news/'
+						className={(navData) =>
+							navData.isActive ? style.active : ''
+						}
+					>
+						News
+					</NavLink>
+				</li>
+				<li className={style.item}>
+					<NavLink
+						to='/profile/'
+						className={(navData) =>
+							navData.isActive ? style.active : ''
+						}
+					>
+						Profile
+					</NavLink>
+				</li>
+				<li className={style.item}>
+					<NavLink
+						to='/settings/'
+						className={(navData) =>
+							navData.isActive ? style.active : ''
+						}
+					>
+						Settings
+					</NavLink>
 				</li>
 			</ul>
 		</nav>

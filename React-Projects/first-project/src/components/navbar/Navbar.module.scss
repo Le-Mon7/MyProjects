@@ -2,11 +2,22 @@
 	grid-area: nav;
 	background-color: #e9a100;
 
-	.item {
-		color: chartreuse;
+	ul {
+		list-style-type: none;
 
-		&.active {
-			color: #0023e9;
+		.item {
+			font-size: 18px;
+			font-weight: 500;
+			margin-bottom: 10px;
+
+			a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+			.active {
+				color: #fbff00;
+			}
 		}
 	}
 }
