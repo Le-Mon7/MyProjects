@@ -5,19 +5,19 @@ function Navbar() {
 		<nav className={style.nav}>
 			<ul>
 				<li className={style.item}>
-					<a>Messages</a>
+					<a href='/messages/'>Messages</a>
 				</li>
 				<li className={`${style.item} ${style.active}`}>
-					<a>Music</a>
+					<a href='/music/'>Music</a>
 				</li>
 				<li className={style.item}>
-					<a>News</a>
+					<a href='/news/'>News</a>
 				</li>
 				<li className={style.item}>
-					<a>Profile</a>
+					<a href='/profile/'>Profile</a>
 				</li>
 				<li className={style.item}>
-					<a>Settings</a>
+					<a href='/settings/'>Settings</a>
 				</li>
 			</ul>
 		</nav>
