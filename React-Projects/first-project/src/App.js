@@ -6,7 +6,6 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Music from './components/Music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
-
 import { Routes, Route } from 'react-router-dom';
 
 function App(props) {
@@ -24,7 +23,12 @@ function App(props) {
 					<Route path='/news/' element={<News />} />
 					<Route
 						path='/profile/'
-						element={<Profile state={props.state.profilePage} />}
+						element={
+							<Profile
+								state={props.state.profilePage}
+								addPost={props.addPost}
+							/>
+						}
 					/>
 					<Route path='/settings/' element={<Settings />} />
 				</Routes>
