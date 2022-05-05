@@ -5,7 +5,12 @@ function Profile(props) {
 	return (
 		<div>
 			<Description />
-			<MyPosts posts={props.state.posts} addPost={props.addPost} />
+			<MyPosts
+				posts={props.state.posts}
+				addPost={props.addPost}
+				changePost={props.changePost}
+				newPostText={props.state.newPostText}
+			/>
 		</div>
 	);
 }
