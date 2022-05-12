@@ -23,29 +23,30 @@ let store = {
 			],
 		},
 	},
-	getState() {
-		return this._state;
-	},
-	addPost() {
-		let newPost = {
-			id: 4,
-			msg: this._state.profilePage.newPostText,
-			likes: 7,
-		};
-
-		this._state.profilePage.posts.push(newPost);
-		this._state.profilePage.newPostText = '';
-		this._rerenderEntireTree(this._state);
-	},
-	changePost(postMessage) {
-		this._state.profilePage.newPostText = postMessage;
-		this._rerenderEntireTree(this._state);
-	},
 	_rerenderEntireTree() {
 		console.log('State change');
 	},
+	getState() {
+		return this._state;
+	},
 	subscribe(observer) {
 		this._rerenderEntireTree = observer;
+	},
+	dispatch(action) {
+		if (action.type === 'ADD-POST') {
+			let newPost = {
+				id: 4,
+				msg: this._state.profilePage.newPostText,
+				likes: 7,
+			};
+
+			this._state.profilePage.posts.push(newPost);
+			this._state.profilePage.newPostText = '';
+			this._rerenderEntireTree(this._state);
+		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+			this._state.profilePage.newPostText = action.postMessage;
+			this._rerenderEntireTree(this._state);
+		}
 	},
 };
 
