@@ -16,14 +16,12 @@ function Dialogs(props) {
 		<Message id={message.id} msg={message.msg} myMsg={message.myMsg} />
 	));
 
-	let newMsgElem = React.createRef();
-
 	let newMsg = () => {
 		props.dispatch(addMessageActionCreator());
 	};
 
-	let onMsgChange = () => {
-		let text = newMsgElem.current.value;
+	let onMsgChange = (e) => {
+		let text = e.target.value;
 		props.dispatch(updateNewMessageTextActionCreator(text));
 	};
 
@@ -38,7 +36,6 @@ function Dialogs(props) {
 				<div className={style.messages_items}>{arrMessages}</div>
 				<textarea
 					onChange={onMsgChange}
-					ref={newMsgElem}
 					value={props.state.newMessageText}
 				></textarea>
 				<button onClick={newMsg}>New Message</button>
