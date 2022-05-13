@@ -21,6 +21,7 @@ let store = {
 				{ id: 3, msg: 'Yo!', myMsg: 1 },
 				{ id: 4, msg: 'Thanks!', myMsg: 0 },
 			],
+			newMessageText: 'New text of message',
 		},
 	},
 	_rerenderEntireTree() {
@@ -46,8 +47,32 @@ let store = {
 		} else if (action.type === 'UPDATE-NEW-POST-TEXT') {
 			this._state.profilePage.newPostText = action.postMessage;
 			this._rerenderEntireTree(this._state);
+		} else if (action.type === 'ADD-MESSAGE') {
+			let newMessage = {
+				id: 5,
+				msg: this._state.messagesPage.newMessageText,
+				myMsg: 1,
+			};
+
+			this._state.messagesPage.messages.push(newMessage);
+			this._state.messagesPage.newMessageText = '';
+			this._rerenderEntireTree(this._state);
+		} else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+			this._state.messagesPage.newMessageText = action.textMsg;
+			this._rerenderEntireTree(this._state);
 		}
 	},
 };
+
+export const addPostActionCreator = () => ({ type: 'ADD-POST' });
+export const updateNewPostTextActionCreator = (text) => ({
+	type: 'UPDATE-NEW-POST-TEXT',
+	postMessage: text,
+});
+export const addMessageActionCreator = () => ({ type: 'ADD-MESSAGE' });
+export const updateNewMessageTextActionCreator = (text) => ({
+	type: 'UPDATE-NEW-MESSAGE-TEXT',
+	textMsg: text,
+});
 
 export default store;

@@ -1,8 +1,11 @@
+import React from 'react';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
 import style from './Dialogs.module.scss';
-
-import React from 'react';
+import {
+	addMessageActionCreator,
+	updateNewMessageTextActionCreator,
+} from '../../Redux/state';
 
 function Dialogs(props) {
 	let arrDialogs = props.state.dialogs.map((dialog) => (
@@ -16,8 +19,12 @@ function Dialogs(props) {
 	let newMsgElem = React.createRef();
 
 	let newMsg = () => {
+		props.dispatch(addMessageActionCreator());
+	};
+
+	let onMsgChange = () => {
 		let text = newMsgElem.current.value;
-		alert(text);
+		props.dispatch(updateNewMessageTextActionCreator(text));
 	};
 
 	return (
@@ -29,7 +36,11 @@ function Dialogs(props) {
 			<div className={style.messages}>
 				<div className={style.messages_title}>Messages</div>
 				<div className={style.messages_items}>{arrMessages}</div>
-				<textarea ref={newMsgElem}></textarea>
+				<textarea
+					onChange={onMsgChange}
+					ref={newMsgElem}
+					value={props.state.newMessageText}
+				></textarea>
 				<button onClick={newMsg}>New Message</button>
 			</div>
 		</div>
