@@ -4,7 +4,7 @@ import style from './MyPosts.module.scss';
 import {
 	addPostActionCreator,
 	updateNewPostTextActionCreator,
-} from '../../../Redux/state';
+} from '../../../Redux/profile-reducer';
 
 function MyPosts(props) {
 	let arrPosts = props.posts.map((post) => (
