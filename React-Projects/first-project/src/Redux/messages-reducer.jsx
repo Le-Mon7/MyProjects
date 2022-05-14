@@ -1,4 +1,20 @@
-export const messagesReducer = (state, action) => {
+let initialState = {
+	dialogs: [
+		{ id: 1, name: 'Max' },
+		{ id: 2, name: 'Anastasia' },
+		{ id: 3, name: 'Jim' },
+		{ id: 4, name: 'Igor' },
+	],
+	messages: [
+		{ id: 1, msg: 'Hi!', myMsg: 0 },
+		{ id: 2, msg: 'How are you?', myMsg: 1 },
+		{ id: 3, msg: 'Yo!', myMsg: 1 },
+		{ id: 4, msg: 'Thanks!', myMsg: 0 },
+	],
+	newMessageText: 'New text of message',
+};
+
+export const messagesReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'ADD-MESSAGE':
 			let newMessage = {

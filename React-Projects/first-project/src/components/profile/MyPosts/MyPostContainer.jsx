@@ -1,17 +1,17 @@
 import React from 'react';
 import Post from './Post/Post';
-import style from './MyPosts.module.scss';
 import {
 	addPostActionCreator,
 	updateNewPostTextActionCreator,
 } from '../../../redux/profile-reducer';
+import MyPosts from './MyPosts';
 
-function MyPosts(props) {
+function MyPostsContainer(props) {
 	let arrPosts = props.posts.map((post) => (
 		<Post message={post.msg} likes={post.likes} />
 	));
 
-	let onAddPost = () => {
+	let addPost = () => {
 		props.dispatch(addPostActionCreator());
 	};
 
@@ -20,19 +20,7 @@ function MyPosts(props) {
 		props.dispatch(updateNewPostTextActionCreator(text));
 	};
 
-	return (
-		<div className={style.posts}>
-			<h3>My post</h3>
-			<div className={style.addPost}>
-				<textarea
-					onChange={onPostChange}
-					value={props.newPostText}
-				></textarea>
-				<button onClick={onAddPost}>Add Post</button>
-			</div>
-			<div>{arrPosts}</div>
-		</div>
-	);
+	return <MyPosts />;
 }
 
-export default MyPosts;
+export default MyPostsContainer;

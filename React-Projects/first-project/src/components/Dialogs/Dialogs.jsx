@@ -5,7 +5,7 @@ import style from './Dialogs.module.scss';
 import {
 	addMessageActionCreator,
 	updateNewMessageTextActionCreator,
-} from '../../Redux/messages-reducer';
+} from '../../redux/messages-reducer';
 
 function Dialogs(props) {
 	let arrDialogs = props.state.dialogs.map((dialog) => (
