@@ -2,27 +2,23 @@ import React from 'react';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
 import style from './Dialogs.module.scss';
-import {
-	addMessageActionCreator,
-	updateNewMessageTextActionCreator,
-} from '../../redux/messages-reducer';
 
 function Dialogs(props) {
-	let arrDialogs = props.state.dialogs.map((dialog) => (
+	let arrDialogs = props.messagesPage.dialogs.map((dialog) => (
 		<DialogItem id={dialog.id} name={dialog.name} />
 	));
 
-	let arrMessages = props.state.messages.map((message) => (
+	let arrMessages = props.messagesPage.messages.map((message) => (
 		<Message id={message.id} msg={message.msg} myMsg={message.myMsg} />
 	));
 
-	let newMsg = () => {
-		props.dispatch(addMessageActionCreator());
+	let onNewMsg = () => {
+		props.addMessage();
 	};
 
 	let onMsgChange = (e) => {
 		let text = e.target.value;
-		props.dispatch(updateNewMessageTextActionCreator(text));
+		props.updateNewMessageText(text);
 	};
 
 	return (
@@ -36,9 +32,9 @@ function Dialogs(props) {
 				<div className={style.messages_items}>{arrMessages}</div>
 				<textarea
 					onChange={onMsgChange}
-					value={props.state.newMessageText}
+					value={props.messagesPage.newMessageText}
 				></textarea>
-				<button onClick={newMsg}>New Message</button>
+				<button onClick={onNewMsg}>New Message</button>
 			</div>
 		</div>
 	);
