@@ -1,1 +1,0 @@
-console.log(MAX_THREADS);
